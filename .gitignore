@@ -74,3 +74,6 @@ csx/
 
 # MacOS
 .DS_Store
+
+# Language Server Cache
+*.lscache
