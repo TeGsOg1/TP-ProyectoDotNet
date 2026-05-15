@@ -3,8 +3,8 @@ public interface ITramiteRepository
 {
     void AgregarTramite (Tramite tramite);
     Tramite? ObtenerTramiteId (Guid id);
-    //IEnumerable<Tramite> ObtenerPorExpeienteId(Guid expedienteId);
+    IEnumerable<Tramite> ObtenerPorTramiteId(Guid expedienteId);
     void ModificarTramite(Tramite t);
     void EliminarTramite(Guid Id);
-    void EliminarPorExpedienteI (Guid expedienteId);
+    void EliminarPorTramiteId (Guid expedienteId);
 }
