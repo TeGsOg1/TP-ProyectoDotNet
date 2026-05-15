@@ -5,9 +5,9 @@ namespace SGE.Aplicacion.Expedientes;
 
 public interface IExpedienteRepository
 {
-    void AgregarExpediente(Expediente expediente);
-    void EliminarExpediente(Guid id);
-    void ActualizarExpediente(Expediente expediente);
+    void Agregar(Expediente expediente);
+    void Eliminar(Guid id);
+    void Actualizar(Expediente expediente);
     Expediente? ObtenerExpedientePorId(Guid id);
     IEnumerable<Expediente>ObtenerTodosExpedientes();
 }

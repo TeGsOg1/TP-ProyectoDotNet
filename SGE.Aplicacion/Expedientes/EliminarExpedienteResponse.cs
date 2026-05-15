@@ -1,6 +1,4 @@
 namespace SGE.Aplicacion.Expedientes;
 
-public record class EliminarExpedienteResponse
-{
+public record class EliminarExpedienteResponse;
 
-}
