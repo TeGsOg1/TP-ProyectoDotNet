@@ -1,6 +1,0 @@
-/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Aplicacion/obj/Debug/net10.0/SGE.Aplicacion.csproj.AssemblyReference.cache
-/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Aplicacion/obj/Debug/net10.0/SGE.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
-/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Aplicacion/obj/Debug/net10.0/SGE.Aplicacion.AssemblyInfoInputs.cache
-/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Aplicacion/obj/Debug/net10.0/SGE.Aplicacion.AssemblyInfo.cs
-/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Aplicacion/obj/Debug/net10.0/SGE.Aplicacion.csproj.CoreCompileInputs.cache
-/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Aplicacion/obj/Debug/net10.0/SGE.Aplicacion.sourcelink.json
