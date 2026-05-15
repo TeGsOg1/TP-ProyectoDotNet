@@ -1,25 +1,26 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Dominio\\SGE.Dominio.csproj": {}
+    "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Dominio/SGE.Dominio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Dominio\\SGE.Dominio.csproj": {
+    "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Dominio/SGE.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Dominio\\SGE.Dominio.csproj",
+        "projectUniqueName": "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Dominio/SGE.Dominio.csproj",
         "projectName": "SGE.Dominio",
-        "projectPath": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Dominio\\SGE.Dominio.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Dominio\\obj\\",
+        "projectPath": "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Dominio/SGE.Dominio.csproj",
+        "packagesPath": "/home/user/.nuget/packages/",
+        "outputPath": "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Dominio/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/user/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net10.0"
         ],
         "sources": {
+          "/usr/lib/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -59,7 +60,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/10.0.107/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

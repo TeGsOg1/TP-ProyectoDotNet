@@ -1,37 +1,106 @@
 {
   "version": 3,
   "targets": {
-    "net10.0": {}
+    "net10.0": {
+      "SGE.Aplicacion/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "SGE.Dominio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SGE.Aplicacion.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SGE.Aplicacion.dll": {}
+        }
+      },
+      "SGE.Dominio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/SGE.Dominio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SGE.Dominio.dll": {}
+        }
+      },
+      "SGE.Infraestructura/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "SGE.Aplicacion": "1.0.0",
+          "SGE.Dominio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SGE.Infraestructura.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SGE.Infraestructura.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SGE.Aplicacion/1.0.0": {
+      "type": "project",
+      "path": "../SGE.Aplicacion/SGE.Aplicacion.csproj",
+      "msbuildProject": "../SGE.Aplicacion/SGE.Aplicacion.csproj"
+    },
+    "SGE.Dominio/1.0.0": {
+      "type": "project",
+      "path": "../SGE.Dominio/SGE.Dominio.csproj",
+      "msbuildProject": "../SGE.Dominio/SGE.Dominio.csproj"
+    },
+    "SGE.Infraestructura/1.0.0": {
+      "type": "project",
+      "path": "../SGE.Infraestructura/SGE.Infraestructura.csproj",
+      "msbuildProject": "../SGE.Infraestructura/SGE.Infraestructura.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0": []
+    "net10.0": [
+      "SGE.Aplicacion >= 1.0.0",
+      "SGE.Dominio >= 1.0.0",
+      "SGE.Infraestructura >= 1.0.0"
+    ]
   },
   "packageFolders": {
-    "C:\\Users\\Admin\\.nuget\\packages\\": {}
+    "/home/user/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Consola\\SGE.Consola.csproj",
+      "projectUniqueName": "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Consola/SGE.Consola.csproj",
       "projectName": "SGE.Consola",
-      "projectPath": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Consola\\SGE.Consola.csproj",
-      "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Consola\\obj\\",
+      "projectPath": "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Consola/SGE.Consola.csproj",
+      "packagesPath": "/home/user/.nuget/packages/",
+      "outputPath": "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Consola/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/user/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
+        "/usr/lib/dotnet/library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Aplicacion/SGE.Aplicacion.csproj": {
+              "projectPath": "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Aplicacion/SGE.Aplicacion.csproj"
+            },
+            "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Dominio/SGE.Dominio.csproj": {
+              "projectPath": "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Dominio/SGE.Dominio.csproj"
+            },
+            "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Infraestructura/SGE.Infraestructura.csproj": {
+              "projectPath": "/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Infraestructura/SGE.Infraestructura.csproj"
+            }
+          }
         }
       },
       "warningProperties": {
@@ -65,7 +134,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/10.0.107/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
