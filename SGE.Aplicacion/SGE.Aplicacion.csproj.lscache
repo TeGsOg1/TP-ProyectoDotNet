@@ -44,8 +44,8 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 /debug:portable
 /filealign:512
 /optimize-
-/out:obj\Debug\net10.0\SGE.Aplicacion.dll
-/refout:obj\Debug\net10.0\refint\SGE.Aplicacion.dll
+/out:obj/Debug/net10.0/SGE.Aplicacion.dll
+/refout:obj/Debug/net10.0/refint/SGE.Aplicacion.dll
 /target:library
 /warnaserror-
 /utf8output
@@ -55,14 +55,6 @@ TemporaryDependencyNodeTargetIdentifier=net10.0
 
 [sourceFiles]
 Class1.cs
-Expedientes/
- ActualizarExpedienteRequest.cs
- AgregarExpedienteRequest.cs
- AgregarExpedienteResponse.cs
- EliminarExpedienteRequest.cs
- EliminarExpedienteResponse.cs
- ExpedienteDTO.cs
- IExpedienteRepository.cs
 obj/Debug/net10.0/
  .NETCoreApp,Version=v10.0.AssemblyAttributes.cs
  SGE.Aplicacion.AssemblyInfo.cs
@@ -70,16 +62,19 @@ obj/Debug/net10.0/
 Tramites/AgregarTramite/
  AgregarTramiteRequest.cs
  AgregarTramiteResponse.cs
+Tramites/EliminarTramite/
+ EliminarTramiteRequest.cs
+ EliminarTramiteResponse.cs
 Tramites/
  ITramiteRepository.cs
  ModificarTramite/
   ModificarTramiteRequest.cs
   ModificarTramiteResponse.cs
- Tramite.cs
+ TramiteDTO.cs
 
 [metadataReferences]
 ../SGE.Dominio/obj/Debug/net10.0/ref/SGE.Dominio.dll
-<DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.3/ref/net10.0/
+<DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.7/ref/net10.0/
  Microsoft.CSharp.dll
  Microsoft.VisualBasic.Core.dll
  Microsoft.VisualBasic.dll
@@ -249,17 +244,17 @@ Tramites/
  WindowsBase.dll
 
 [analyzerReferences]
-<DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.3/analyzers/dotnet/cs/
+<DOTNET>/packs/Microsoft.NETCore.App.Ref/10.0.7/analyzers/dotnet/cs/
  Microsoft.Interop.ComInterfaceGenerator.dll
  Microsoft.Interop.JavaScript.JSImportGenerator.dll
  Microsoft.Interop.LibraryImportGenerator.dll
  Microsoft.Interop.SourceGeneration.dll
  System.Text.Json.SourceGeneration.dll
  System.Text.RegularExpressions.Generator.dll
-<DOTNET>/sdk/10.0.103/Sdks/Microsoft.NET.Sdk/analyzers/
+<DOTNET>/sdk/10.0.107/Sdks/Microsoft.NET.Sdk/analyzers/
  Microsoft.CodeAnalysis.CSharp.NetAnalyzers.dll
  Microsoft.CodeAnalysis.NetAnalyzers.dll
 
 [analyzerConfigFiles]
-<DOTNET>/sdk/10.0.103/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_10_default.globalconfig
+<DOTNET>/sdk/10.0.107/Sdks/Microsoft.NET.Sdk/analyzers/build/config/analysislevel_10_default.globalconfig
 obj/Debug/net10.0/SGE.Aplicacion.GeneratedMSBuildEditorConfig.editorconfig
