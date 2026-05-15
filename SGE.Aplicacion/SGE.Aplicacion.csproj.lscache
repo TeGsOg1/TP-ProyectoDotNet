@@ -62,14 +62,22 @@ obj/Debug/net10.0/
 Tramites/AgregarTramite/
  AgregarTramiteRequest.cs
  AgregarTramiteResponse.cs
-Tramites/EliminarTramite/
- EliminarTramiteRequest.cs
- EliminarTramiteResponse.cs
+ AgregarTramiteUseCase.cs
 Tramites/
+ Comun/EntidadNoEncontradaExeption.cs
+ EliminarTramite/
+  EliminarTramiteRequest.cs
+  EliminarTramiteResponse.cs
+  EliminarTramiteUseCase.cs
  ITramiteRepository.cs
+ ListarTramite/
+  ListarTramiteRequest.cs
+  ListarTramitesRequest.cs
+  ListarTramitesUseCase.cs
  ModificarTramite/
   ModificarTramiteRequest.cs
   ModificarTramiteResponse.cs
+  ModificarTramiteUseCase.cs
  TramiteDTO.cs
 
 [metadataReferences]

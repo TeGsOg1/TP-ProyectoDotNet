@@ -1,5 +1,3 @@
 namespace SGE.Aplicacion.Tramites.EliminarTramite;
 
-public record EliminarTramiteResponse(
-    Guid TramiteId;
-);
+public record EliminarTramiteResponse(Guid Id);

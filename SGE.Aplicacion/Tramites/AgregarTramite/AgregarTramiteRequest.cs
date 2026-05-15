@@ -1,10 +1,9 @@
 namespace SGE.Aplicacion.Tramites.AgregarTramite;
 
-public record AgregarTramiteRequest
-{
-    Guid TramiteId
-    ContenidoTramite Contenido;
-    EtiquetaTramite Etiqueta;
-    Guid IdUsuario;
-
-}
+public record AgregarTramiteRequest(
+    Guid Id,
+    Guid ExpedienteId,
+    ContenidoTramite Contenido,
+    EtiquetaTramite Etiqueta,
+    Guid IdUsuario
+);
