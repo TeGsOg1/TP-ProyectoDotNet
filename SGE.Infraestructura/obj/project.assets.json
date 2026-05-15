@@ -1,11 +1,49 @@
 {
   "version": 3,
   "targets": {
-    "net10.0": {}
+    "net10.0": {
+      "SGE.Aplicacion/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "dependencies": {
+          "SGE.Dominio": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SGE.Aplicacion.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SGE.Aplicacion.dll": {}
+        }
+      },
+      "SGE.Dominio/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v10.0",
+        "compile": {
+          "bin/placeholder/SGE.Dominio.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SGE.Dominio.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "SGE.Aplicacion/1.0.0": {
+      "type": "project",
+      "path": "../SGE.Aplicacion/SGE.Aplicacion.csproj",
+      "msbuildProject": "../SGE.Aplicacion/SGE.Aplicacion.csproj"
+    },
+    "SGE.Dominio/1.0.0": {
+      "type": "project",
+      "path": "../SGE.Dominio/SGE.Dominio.csproj",
+      "msbuildProject": "../SGE.Dominio/SGE.Dominio.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net10.0": []
+    "net10.0": [
+      "SGE.Aplicacion >= 1.0.0",
+      "SGE.Dominio >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\Admin\\.nuget\\packages\\": {}
@@ -13,11 +51,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Infraestructura\\SGE.Infraestructura.csproj",
+      "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Infraestructura\\SGE.Infraestructura.csproj",
       "projectName": "SGE.Infraestructura",
-      "projectPath": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Infraestructura\\SGE.Infraestructura.csproj",
+      "projectPath": "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Infraestructura\\SGE.Infraestructura.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Infraestructura\\obj\\",
+      "outputPath": "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Infraestructura\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -31,7 +69,14 @@
       "frameworks": {
         "net10.0": {
           "targetAlias": "net10.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj": {
+              "projectPath": "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Aplicacion\\SGE.Aplicacion.csproj"
+            },
+            "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Dominio\\SGE.Dominio.csproj": {
+              "projectPath": "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Dominio\\SGE.Dominio.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

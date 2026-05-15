@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Dominio\\SGE.Dominio.csproj": {}
+    "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Dominio\\SGE.Dominio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Dominio\\SGE.Dominio.csproj": {
+    "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Dominio\\SGE.Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Dominio\\SGE.Dominio.csproj",
+        "projectUniqueName": "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Dominio\\SGE.Dominio.csproj",
         "projectName": "SGE.Dominio",
-        "projectPath": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Dominio\\SGE.Dominio.csproj",
+        "projectPath": "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Dominio\\SGE.Dominio.csproj",
         "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\onedrive\\escritorio\\Proyectonet\\sge\\SGE.Dominio\\obj\\",
+        "outputPath": "C:\\Users\\Admin\\OneDrive\\Escritorio\\ProyectoNet\\SGE\\SGE.Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
