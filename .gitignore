@@ -74,3 +74,6 @@ csx/
 
 # MacOS
 .DS_Store
+
+# Temporary cache files
+*.lscache
