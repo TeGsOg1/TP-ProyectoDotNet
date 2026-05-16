@@ -11,7 +11,7 @@ public class ListarTramitesUseCase
         _tramiteRepository = tramiteRepository;
     }
 
-    public ListarTramitesRespose Ejecutar (ListarTramiteRequest request)
+    public ListarTramitesResponse Ejecutar (ListarTramiteRequest request)
     {
         IEnumerable<Tramite> tramites = _tramiteRepository.ObtenerTramitesPorExpediente(request.ExpedienteId);
 
@@ -19,7 +19,7 @@ public class ListarTramitesUseCase
         
         foreach (Tramite tramite in tramites)
         {
-            tramitesDTO dto = new(
+            TramiteDTO dto = new(
                 tramite.TramiteId,
                 tramite.ExpedienteId,
                 tramite.Contenido,
@@ -32,6 +32,6 @@ public class ListarTramitesUseCase
             tramitesDTO.Add(dto);
         }
         
-        return new ListarTramitesRespose (tramitesDTO);
+        return new ListarTramitesResponse (tramitesDTO);
     }
 }

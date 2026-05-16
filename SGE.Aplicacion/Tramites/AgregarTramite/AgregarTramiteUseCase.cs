@@ -24,8 +24,8 @@ public class AgregarTramiteUseCase
         Tramite tramite = new Tramite(
             request.Id,
             request.ExpedienteId,
-            request.Contenido,
-            request.Etiqueta,
+            new ContenidoTramite(request.Contenido),
+            new EtiquetaTramite(request.Etiqueta),
             request.UsuarioUltimoCambio
         );
         _tramiteRepository.AgregarTramite(tramite);

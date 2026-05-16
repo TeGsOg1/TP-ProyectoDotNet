@@ -20,7 +20,7 @@ public class ModificarTramiteUseCase
         if (tramite is null) {
             throw new EntidadNoEncontradaException($"No se encontro el tramite con ID: {request.Id}");
         }
-        tramite.Modificar(request.Contenido, request.Etiqueta, request.IdUsuario);
+        tramite.Modificar(new ContenidoTramite(request.Contenido), new EtiquetaTramite(request.Etiqueta), request.IdUsuario);
         _tramiteRepository.ModificarTramite(tramite);
         _actualizacionEstadoExpedienteService.Actualizar(request.IdUsuario, tramite.ExpedienteId);
         return new ModificarTramiteResponse(tramite.Id);       
