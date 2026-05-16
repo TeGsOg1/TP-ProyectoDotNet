@@ -13,4 +13,5 @@ public interface ITramiteRepository
 
     void EliminarTramitePorExpediente(Guid ExpedienteId);
 
+    IEnumerable<Tramite> ObtenerTodos();
 }
