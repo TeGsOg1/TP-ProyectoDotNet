@@ -10,8 +10,7 @@ public class TramiteTxtRepository : ITramiteRepository
     public void AgregarTramite(Tramite tramite) {
 
         using var sw = new StreamWriter(_nombreArchivo, true);
-        sw.WriteLine($"{tramite.TramiteId}|{tramite.ExpedienteId}|{tramite.contenido}|{tramite.etiqueta}|{tramite.fechaCreacion}
-        |{tramite.fechaModificacion}|{tramite.UsuarioUltimoCambio}");
+        sw.WriteLine($"{tramite.TramiteId}|{tramite.ExpedienteId}|{tramite.contenido}|{tramite.etiqueta}|{tramite.fechaCreacion}|{tramite.fechaModificacion}|{tramite.UsuarioUltimoCambio}");
     }
 
     public IEnumerable<Tramite> ObtenerTodos()
