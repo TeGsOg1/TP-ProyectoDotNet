@@ -1,4 +1,5 @@
 using SGE.Aplicacion.Autorizacion;
+using SGE.Aplicacion.Comun;
 namespace SGE.Aplicacion.Tramites.ModificarTramite;
 
 public class ModificarTramiteUseCase

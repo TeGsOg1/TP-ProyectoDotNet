@@ -2,6 +2,7 @@ using System;
 using SGE.Aplicacion.Expedientes; 
 using SGE.Aplicacion.Tramites;
 using SGE.Dominio;
+using SGE.Aplicacion.Comun;
 using System.Linq;
 
 namespace SGE.Aplicacion;

@@ -1,5 +1,5 @@
 namespace SGE.Aplicacion.Tramites.ListarTramites;
 
-public record ListarTramitesRequest(
+public record ListarTramiteRequest(
     Guid ExpedienteId
 );
