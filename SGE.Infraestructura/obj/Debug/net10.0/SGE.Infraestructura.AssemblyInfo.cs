@@ -10,12 +10,12 @@
 using System;
 using System.Reflection;
 
-[assembly: System.Reflection.AssemblyCompanyAttribute("SGE.Consola")]
+[assembly: System.Reflection.AssemblyCompanyAttribute("SGE.Infraestructura")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1ebdca4fa451522db082f71ea7beb5941f3d1462")]
-[assembly: System.Reflection.AssemblyProductAttribute("SGE.Consola")]
-[assembly: System.Reflection.AssemblyTitleAttribute("SGE.Consola")]
+[assembly: System.Reflection.AssemblyProductAttribute("SGE.Infraestructura")]
+[assembly: System.Reflection.AssemblyTitleAttribute("SGE.Infraestructura")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
 
 // Generado por la clase WriteCodeFragment de MSBuild.
