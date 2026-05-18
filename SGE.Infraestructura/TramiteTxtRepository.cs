@@ -16,7 +16,7 @@ public class TramiteTxtRepository : ITramiteRepository
     public IEnumerable<Tramite> ObtenerTodos()
     {
         var lista = new List<Tramite>();
-        if (!File.Exists(NombreArchivo)) 
+        if (!File.Exists(_nombreArchivo)) 
             return lista;
 
         foreach (var linea in File.ReadAllLines(_nombreArchivo))

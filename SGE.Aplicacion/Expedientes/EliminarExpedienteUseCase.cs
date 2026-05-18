@@ -1,6 +1,7 @@
 using System;
 using SGE.Aplicacion.Tramites; 
-using SGE.Aplicacion;
+using SGE.Aplicacion.Autorizacion;
+using SGE.Aplicacion.Comun;
 using SGE.Dominio;
 
 namespace SGE.Aplicacion.Expedientes;
@@ -18,11 +19,11 @@ public class EliminarExpedienteUseCase
     }
     public EliminarExpedienteResponse Ejecutar(EliminarExpedienteRequest request)
     {
-         if (!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteModificacion))
+        if (!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteModificacion))
         {
             throw new AutorizacionException("El usuario no tiene permiso para modificar la carátula del expediente.");
         }
-        var expediente = _expedienteRepository.ObtenerPorId(request.Id);
+        var expediente = _expedienteRepository.ObtenerExpedientePorId(request.Id);
         if (expediente == null)
         {
             throw new EntidadNoEncontradaException("Expediente no encontrado.");

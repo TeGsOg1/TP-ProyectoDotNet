@@ -1,4 +1,5 @@
 using SGE.Dominio.Tramites;
+using SGE.Aplicacion;
 
 namespace SGE.Aplicacion.Tramites.ListarTramites;
 

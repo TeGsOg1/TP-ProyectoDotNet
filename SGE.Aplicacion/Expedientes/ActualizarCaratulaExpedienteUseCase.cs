@@ -1,5 +1,6 @@
 using System;
-using SGE.Aplicacion;
+using SGE.Aplicacion.Autorizacion;
+using SGE.Aplicacion.Comun;
 using SGE.Dominio; 
 
 namespace SGE.Aplicacion.Expedientes;
