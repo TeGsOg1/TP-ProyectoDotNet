@@ -1,6 +1,7 @@
 using SGE.Aplicacion.Tramites;
 using SGE.Dominio.Tramites;
 using SGE.Aplicacion.Comun;
+using SGE.Dominio.ValueObjects;
 
 
 
@@ -12,7 +13,7 @@ public class TramiteTxtRepository : ITramiteRepository
     public void AgregarTramite(Tramite tramite) {
 
         using var sw = new StreamWriter(_nombreArchivo, true);
-        sw.WriteLine($"{tramite.TramiteId}|{tramite.ExpedienteId}|{tramite.contenido}|{tramite.etiqueta}|{tramite.fechaCreacion}|{tramite.fechaModificacion}|{tramite.UsuarioUltimoCambio}");
+        sw.WriteLine($"{tramite.Id}|{tramite.ExpedienteId}|{tramite.Contenido}|{tramite.Etiqueta}|{tramite.FechaCreacion}|{tramite.FechaUltimaModificacion}|{tramite.UsuarioUltimoCambio}");
     }
 
     public IEnumerable<Tramite> ObtenerTodos()
@@ -30,11 +31,11 @@ public class TramiteTxtRepository : ITramiteRepository
             if (datos.Length != 7)
                 continue;
                 
-            var tramite = Tramite.Reconstruir(
+            var tramite = Tramite.Reconstruct(
                 Guid.Parse(datos[0]),
                 Guid.Parse(datos[1]),
-                new ContenidoTramite(datos[2]),
-                Enum.Parse<EtiquetaTramite>(datos[3]),
+                Enum.Parse<Dominio.Enums.EtiquetaTramite>(datos[2]),
+                new ContenidoTramite(datos[3]),
                 DateTime.Parse(datos[4]),
                 DateTime.Parse(datos[5]),
                 Guid.Parse(datos[6])
@@ -90,7 +91,7 @@ public class TramiteTxtRepository : ITramiteRepository
         using var sw = new StreamWriter(_nombreArchivo, false);
         foreach (var t in tramites)
         {
-            sw.WriteLine($"{t.Id}|{t.ExpedienteId}|{t.Contenido}|{t.Etiqueta}|{t.FechaCreacion}|{t.FechaModificacion}|{t.UsuarioUltimoCambio}");
+            sw.WriteLine($"{t.Id}|{t.ExpedienteId}|{t.Contenido}|{t.Etiqueta}|{t.FechaCreacion}|{t.FechaUltimaModificacion}|{t.UsuarioUltimoCambio}");
         }
     }
 }
