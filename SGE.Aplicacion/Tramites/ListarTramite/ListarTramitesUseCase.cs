@@ -1,6 +1,7 @@
 using SGE.Dominio.Tramites;
 using SGE.Aplicacion;
 
+
 namespace SGE.Aplicacion.Tramites.ListarTramites;
 
 public class ListarTramitesUseCase 
@@ -16,7 +17,7 @@ public class ListarTramitesUseCase
     {
         IEnumerable<Tramite> tramites = _tramiteRepository.ObtenerTramitesPorExpediente(request.ExpedienteId);
 
-        List<TramiteDTO> tramitesDTO = new();
+        List<TramiteDTO> tramiteDTO = new();
         
         foreach (Tramite tramite in tramites)
         {
@@ -30,9 +31,9 @@ public class ListarTramitesUseCase
                 tramite.IdUsuario,
                 tramite.UsuarioUltimoCambio);
             
-            tramitesDTO.Add(dto);
+            tramiteDTO.Add(dto);
         }
         
-        return new ListarTramitesResponse (tramitesDTO);
+        return new ListarTramitesResponse (tramiteDTO);
     }
 }

@@ -1,6 +1,6 @@
 using SGE.Aplicacion.Autorizacion;
 using SGE.Aplicacion.Comun;
-using SGE.Aplicacion;
+using SGE.Dominio.Tramites;
 namespace SGE.Aplicacion.Tramites.EliminarTramite;
 
 public class EliminarTramiteUseCase

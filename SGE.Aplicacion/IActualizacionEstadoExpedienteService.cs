@@ -1,6 +1,6 @@
 using System;
 
-namespace SGE.Aplicacion.Expedientes;
+namespace SGE.Aplicacion;
 
 public interface IActualizacionEstadoExpedienteService
 {

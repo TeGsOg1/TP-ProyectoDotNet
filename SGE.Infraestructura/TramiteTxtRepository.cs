@@ -2,6 +2,8 @@ using SGE.Aplicacion.Tramites;
 using SGE.Dominio.Tramites;
 using SGE.Aplicacion.Comun;
 
+
+
 namespace SGE.Infraestructura;
 
 public class TramiteTxtRepository : ITramiteRepository
