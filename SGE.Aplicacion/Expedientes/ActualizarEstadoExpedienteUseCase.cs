@@ -1,8 +1,10 @@
 using System;
 using SGE.Aplicacion.Autorizacion;
 using SGE.Aplicacion.Comun;
-using SGE.Aplicacion.Excepciones;
-using SGE.Dominio; 
+using SGE.Dominio;
+using SGE.Dominio.Comun;
+using SGE.Dominio.Enums;
+using SGE.Dominio.Expedientes;
 
 namespace SGE.Aplicacion.Expedientes;
 
@@ -29,11 +31,11 @@ public class ActualizarEstadoExpedienteUseCase
             throw new EntidadNoEncontradaException("Expediente no encontrado.");
         }
         // trato de parsear el estado nuevo, el true lo hago para que ignore el case
-        if (!Enum.TryParse<EstadoEnum>(request.EstadoNuevo, true, out var nuevoEstadoParseado))
+        if (!Enum.TryParse<Estado>(request.EstadoNuevo, true, out var nuevoEstadoParseado))
         {
             throw new DominioException("El estado ingresado no es válido para el negocio.");
         }
-        expediente.ActualizarEstado(nuevoEstadoParseado, request.IdUsuario);
+        expediente.CambiarEstado(nuevoEstadoParseado, request.IdUsuario);
         _repository.Actualizar(expediente);
     }
 }

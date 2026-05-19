@@ -21,3 +21,6 @@ C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Consola\obj\Debug\net10.0
 C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Consola\obj\Debug\net10.0\SGE.Consola.pdb
 C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Consola\obj\Debug\net10.0\SGE.Consola.genruntimeconfig.cache
 C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Consola\obj\Debug\net10.0\ref\SGE.Consola.dll
+C:\Users\usuario\OneDrive\Documentos\Desktop\PdotNet\TP-ProyectoDotNet\SGE.Consola\obj\Debug\net10.0\SGE.Consola.dll
+C:\Users\usuario\OneDrive\Documentos\Desktop\PdotNet\TP-ProyectoDotNet\SGE.Consola\obj\Debug\net10.0\refint\SGE.Consola.dll
+C:\Users\usuario\OneDrive\Documentos\Desktop\PdotNet\TP-ProyectoDotNet\SGE.Consola\obj\Debug\net10.0\SGE.Consola.pdb

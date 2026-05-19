@@ -2,6 +2,7 @@ using System;
 using System.Linq;
 using SGE.Aplicacion;
 using SGE.Dominio;
+using SGE.Dominio.Expedientes;
 namespace SGE.Aplicacion.Expedientes;
 
 public class ObtenerTodosExpedientesUseCase
@@ -16,8 +17,8 @@ public class ObtenerTodosExpedientesUseCase
         var expedientes =  _repository.ObtenerTodosExpedientes();   
         var expedientesDTO = expedientes.Select(e => new ExpedienteDTO(
             e.Id,
-            //Caratula es un Value Object, por lo que para obtener su contenido tengo que acceder a la propiedad Contenido
-            e.Caratula.Contenido, 
+            //Caratula es un Value Object, por lo que para obtener su contenido tengo que acceder a la propiedad Texto
+            e.Caratula.Texto, 
             e.FechaCreacion,
             e.FechaUltimaModificacion,
             e.UsuarioUltimoCambio,

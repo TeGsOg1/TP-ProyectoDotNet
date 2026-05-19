@@ -3,6 +3,7 @@ using SGE.Aplicacion.Tramites;
 using SGE.Aplicacion.Autorizacion;
 using SGE.Aplicacion.Comun;
 using SGE.Dominio;
+using SGE.Dominio.Expedientes;
 
 namespace SGE.Aplicacion.Expedientes;
 //AL ELIMINAR UN EXPEDIENTE TENGO QUE ELIMINAR TODOS LOS TRÁMITES ASOCIADOS
@@ -19,9 +20,9 @@ public class EliminarExpedienteUseCase
     }
     public EliminarExpedienteResponse Ejecutar(EliminarExpedienteRequest request)
     {
-        if (!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteModificacion))
+        if (!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteBaja))
         {
-            throw new AutorizacionException("El usuario no tiene permiso para modificar la carátula del expediente.");
+            throw new AutorizacionException("El usuario no tiene permiso para eliminar expedientes.");
         }
         var expediente = _expedienteRepository.ObtenerExpedientePorId(request.Id);
         if (expediente == null)

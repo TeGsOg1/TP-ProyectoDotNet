@@ -16,3 +16,6 @@ C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug
 C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\refint\SGE.Infraestructura.dll
 C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.pdb
 C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\ref\SGE.Infraestructura.dll
+C:\Users\usuario\OneDrive\Documentos\Desktop\PdotNet\TP-ProyectoDotNet\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.dll
+C:\Users\usuario\OneDrive\Documentos\Desktop\PdotNet\TP-ProyectoDotNet\SGE.Infraestructura\obj\Debug\net10.0\refint\SGE.Infraestructura.dll
+C:\Users\usuario\OneDrive\Documentos\Desktop\PdotNet\TP-ProyectoDotNet\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.pdb

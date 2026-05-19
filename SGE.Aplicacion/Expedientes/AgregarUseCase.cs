@@ -1,6 +1,8 @@
 using System;
 using SGE.Aplicacion; 
 using SGE.Dominio;
+using SGE.Dominio.Expedientes;
+using SGE.Dominio.ValueObjects;
 using SGE.Aplicacion.Autorizacion;
 namespace SGE.Aplicacion.Expedientes;
 
@@ -17,7 +19,7 @@ public class AgregarUseCase
 
     public AgregarExpedienteResponse Ejecutar(AgregarExpedienteRequest request)
     {
-        if (!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteCreacion))
+        if (!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteAlta))
         {
            throw new AutorizacionException("El usuario no tiene permiso para agregar expedientes.");
         }

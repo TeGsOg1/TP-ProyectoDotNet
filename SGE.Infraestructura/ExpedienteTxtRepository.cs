@@ -1,7 +1,9 @@
 using System;
 using SGE.Aplicacion.Expedientes;
 using SGE.Aplicacion.Comun;
-using SGE.Dominio;
+using SGE.Dominio.Expedientes;
+using SGE.Dominio.Enums;
+using SGE.Dominio.ValueObjects;
 namespace SGE.Infraestructura;
 
 public class ExpedienteTxtRepository : IExpedienteRepository
@@ -14,7 +16,7 @@ public class ExpedienteTxtRepository : IExpedienteRepository
         // un expediente nuevo
         using var sw = new StreamWriter(_nombreArchivo, true);
         sw.WriteLine(expediente.Id);
-        sw.WriteLine(expediente.Caratula.Contenido); 
+        sw.WriteLine(expediente.Caratula.Texto); 
         // el "O": como estoy escribiendo un DateTime, lo guardo en formato ISO 8601 (Un estandar internacional)
         // para facilitar su lectura y reconstrucción posterior
         sw.WriteLine(expediente.FechaCreacion.ToString("O")); 
@@ -40,7 +42,7 @@ public class ExpedienteTxtRepository : IExpedienteRepository
         foreach (var e in expedientes)
         {
             sw.WriteLine(e.Id);
-            sw.WriteLine(e.Caratula.Contenido);
+            sw.WriteLine(e.Caratula.Texto);
             sw.WriteLine(e.FechaCreacion.ToString("O"));
             sw.WriteLine(e.FechaUltimaModificacion.ToString("O"));
             sw.WriteLine(e.UsuarioUltimoCambio);
@@ -75,12 +77,12 @@ public class ExpedienteTxtRepository : IExpedienteRepository
             var fechaCreacion = DateTime.Parse(sr.ReadLine() ?? "");
             var fechaModif = DateTime.Parse(sr.ReadLine() ?? "");
             var usuario = Guid.Parse(sr.ReadLine() ?? "");
-            var estado = Enum.Parse<EstadoEnum>(sr.ReadLine() ?? "");
+            var estado = Enum.Parse<Estado>(sr.ReadLine() ?? "");
 
             // Reconstruyo el Value Object y la Entidad
             var caratula = new Caratula(caratulaTexto);
             //Factory Method para reconstruir el expediente con todos sus datos (incluyendo fechas y estado)
-            var expediente = Expediente.Reconstruir(id, caratula, fechaCreacion, fechaModif, usuario, estado);   
+            var expediente = Expediente.Reconstruct(id, caratula, fechaCreacion, fechaModif, usuario, estado);   
             expedientes.Add(expediente);
         }
         return expedientes;

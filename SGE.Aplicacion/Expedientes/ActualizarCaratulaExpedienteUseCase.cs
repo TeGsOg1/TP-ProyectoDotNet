@@ -1,7 +1,10 @@
 using System;
 using SGE.Aplicacion.Autorizacion;
 using SGE.Aplicacion.Comun;
-using SGE.Dominio; 
+using SGE.Dominio;
+using SGE.Dominio.Comun;
+using SGE.Dominio.ValueObjects;
+using SGE.Dominio.Expedientes;
 
 namespace SGE.Aplicacion.Expedientes;
 
@@ -25,7 +28,7 @@ public class ActualizarCaratulaExpedienteUseCase
         {
             throw new EntidadNoEncontradaException("Expediente no encontrado.");
         }
-        //Creo el valueObject con la nueva carátula, el expediente se encarga de validar que no esté vacía
+        //Creo el valueObject con la nueva carátula; el ValueObject validará su contenido
         var nuevaCaratula = new Caratula(request.NuevaCaratula);
         //tiene que estar en el dominio en la entidad
         expediente.ActualizarCaratula(nuevaCaratula, request.IdUsuario);
