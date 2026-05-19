@@ -1,5 +1,10 @@
 using SGE.Aplicacion;
 using SGE.Aplicacion.Autorizacion;
+using SGE.Aplicacion.Comun;
+using SGE.Dominio.Tramites;
+using SGE.Dominio.Enums;
+using SGE.Dominio.ValueObjects;
+
 namespace SGE.Aplicacion.Tramites.AgregarTramite;
 
 public class AgregarTramiteUseCase 
@@ -19,15 +24,16 @@ public class AgregarTramiteUseCase
     {
         if (!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.TramiteAlta))
         {
-            throw new AutorizacionException("El usuario no posee permiso para dar de alta un tramites.");
+            throw new AutorizacionException("El usuario no posee permiso para dar de alta un tramite.");
         }
+        
         Tramite tramite = new Tramite(
-            request.Id,
             request.ExpedienteId,
-            new ContenidoTramite(request.contenido),
-            new EtiquetaTramite(request.etiqueta),
+            Enum.Parse<EtiquetaTramite>(request.etiqueta ?? "", true),
+            new ContenidoTramite(request.contenido ?? ""),
             request.IdUsuario
         );
+        
         _tramiteRepository.AgregarTramite(tramite);
 
         _actualizacionEstadoExpedienteService.Actualizar(request.IdUsuario, tramite.ExpedienteId);

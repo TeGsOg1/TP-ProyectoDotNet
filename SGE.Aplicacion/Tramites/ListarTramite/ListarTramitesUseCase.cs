@@ -22,14 +22,14 @@ public class ListarTramitesUseCase
         foreach (Tramite tramite in tramites)
         {
             TramiteDTO dto = new(
-                tramite.TramiteId,
+                tramite.Id,
                 tramite.ExpedienteId,
-                tramite.Contenido,
-                tramite.Etiqueta,
+                tramite.Contenido.Texto,
+                tramite.Etiqueta.ToString(),
                 tramite.FechaCreacion,
-                tramite.FechaModificacion,
-                tramite.IdUsuario,
-                tramite.UsuarioUltimoCambio);
+                tramite.FechaUltimaModificacion,
+                tramite.UsuarioUltimoCambio
+            );
             
             tramiteDTO.Add(dto);
         }
