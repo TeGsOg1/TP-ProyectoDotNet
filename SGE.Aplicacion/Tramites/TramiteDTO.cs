@@ -1,9 +1,11 @@
 namespace SGE.Aplicacion.Tramites;
+
 public record TramiteDTO (
-Guid TramiteId,
-Guid ExpedienteId,
-string? contenido,
-string? etiqueta,
-DateTime fechaCreacion,
-DateTime fechaModificacion,
-Guid UsuarioUltimoCambio);
+    Guid Id,
+    Guid ExpedienteId,
+    string? Contenido,
+    string? Etiqueta,
+    DateTime FechaCreacion,
+    DateTime FechaUltimaModificacion,
+    Guid UsuarioUltimoCambio
+);

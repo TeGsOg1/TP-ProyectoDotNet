@@ -1,5 +1,8 @@
 using SGE.Aplicacion.Autorizacion;
 using SGE.Aplicacion.Comun;
+using SGE.Dominio.Enums;
+using SGE.Dominio.ValueObjects;
+
 namespace SGE.Aplicacion.Tramites.ModificarTramite;
 
 public class ModificarTramiteUseCase
@@ -21,7 +24,14 @@ public class ModificarTramiteUseCase
         if (tramite is null) {
             throw new EntidadNoEncontradaException($"No se encontro el tramite con ID: {request.Id}");
         }
-        tramite.Modificar(new ContenidoTramite(request.Contenido), new EtiquetaTramite(request.Etiqueta), request.IdUsuario);
+        
+        if (request.Contenido != null) {
+            tramite.ActualizarContenido(new ContenidoTramite(request.Contenido), request.IdUsuario);
+        }
+        if (request.Etiqueta != null) {
+            tramite.CambiarEtiqueta(Enum.Parse<EtiquetaTramite>(request.Etiqueta, true), request.IdUsuario);
+        }
+        
         _tramiteRepository.ModificarTramite(tramite);
         _actualizacionEstadoExpedienteService.Actualizar(request.IdUsuario, tramite.ExpedienteId);
         return new ModificarTramiteResponse(tramite.Id);       

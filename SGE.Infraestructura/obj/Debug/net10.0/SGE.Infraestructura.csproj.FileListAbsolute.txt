@@ -1,18 +1,21 @@
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\bin\Debug\net10.0\SGE.Infraestructura.deps.json
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\bin\Debug\net10.0\SGE.Infraestructura.dll
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\bin\Debug\net10.0\SGE.Infraestructura.pdb
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\bin\Debug\net10.0\SGE.Aplicacion.dll
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\bin\Debug\net10.0\SGE.Dominio.dll
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\bin\Debug\net10.0\SGE.Dominio.pdb
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\bin\Debug\net10.0\SGE.Aplicacion.pdb
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.csproj.AssemblyReference.cache
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.AssemblyInfoInputs.cache
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.AssemblyInfo.cs
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.csproj.CoreCompileInputs.cache
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.sourcelink.json
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infr.0FEB7F8C.Up2Date
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.dll
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\refint\SGE.Infraestructura.dll
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\SGE.Infraestructura.pdb
-C:\Users\Admin\OneDrive\Escritorio\ProyectoNet\SGE\SGE.Infraestructura\obj\Debug\net10.0\ref\SGE.Infraestructura.dll
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/bin/Debug/net10.0/SGE.Infraestructura.deps.json
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/bin/Debug/net10.0/SGE.Infraestructura.dll
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/bin/Debug/net10.0/SGE.Infraestructura.pdb
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/bin/Debug/net10.0/SGE.Aplicacion.dll
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/bin/Debug/net10.0/SGE.Dominio.dll
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/bin/Debug/net10.0/SGE.Dominio.pdb
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/bin/Debug/net10.0/SGE.Aplicacion.pdb
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infraestructura.csproj.AssemblyReference.cache
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infraestructura.GeneratedMSBuildEditorConfig.editorconfig
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infraestructura.AssemblyInfoInputs.cache
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infraestructura.AssemblyInfo.cs
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infraestructura.csproj.CoreCompileInputs.cache
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infraestructura.sourcelink.json
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infr.0FEB7F8C.Up2Date
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infraestructura.dll
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/refint/SGE.Infraestructura.dll
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infraestructura.pdb
+C:/Users/Admin/OneDrive/Escritorio/ProyectoNet/SGE/SGE.Infraestructura/obj/Debug/net10.0/ref/SGE.Infraestructura.dll
+/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infraestructura.dll
+/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Infraestructura/obj/Debug/net10.0/refint/SGE.Infraestructura.dll
+/home/user/Facultad/Segundo Año/Seminario .NET/TP-ProyectoDotNet/SGE.Infraestructura/obj/Debug/net10.0/SGE.Infraestructura.pdb
