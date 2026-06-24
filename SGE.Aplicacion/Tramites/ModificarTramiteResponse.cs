@@ -1,3 +1,3 @@
-namespace SGE.Aplicacion.Tramites.ModificarTramite;
+namespace SGE.Aplicacion.Tramites;
 
 public record  ModificarTramiteResponse (Guid Id);

@@ -1,4 +1,4 @@
-namespace SGE.Aplicacion.Tramites.AgregarTramite;
+namespace SGE.Aplicacion.Tramites;
 
 public record AgregarTramiteRequest(
     Guid Id,
