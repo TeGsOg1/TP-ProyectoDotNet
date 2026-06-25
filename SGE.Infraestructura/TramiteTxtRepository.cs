@@ -1,6 +1,5 @@
 using SGE.Aplicacion.Tramites;
 using SGE.Dominio.Tramites;
-using SGE.Aplicacion.Comun;
 using SGE.Dominio.ValueObjects;
 
 
@@ -34,8 +33,8 @@ public class TramiteTxtRepository : ITramiteRepository
             var tramite = Tramite.Reconstruct(
                 Guid.Parse(datos[0]),
                 Guid.Parse(datos[1]),
-                Enum.Parse<Dominio.Enums.EtiquetaTramite>(datos[2]),
-                new ContenidoTramite(datos[3]),
+                Enum.Parse<Dominio.Enums.EtiquetaTramite>(datos[3]),
+                new ContenidoTramite(datos[2]),
                 DateTime.Parse(datos[4]),
                 DateTime.Parse(datos[5]),
                 Guid.Parse(datos[6])

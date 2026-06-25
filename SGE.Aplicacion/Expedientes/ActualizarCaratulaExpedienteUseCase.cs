@@ -1,6 +1,5 @@
 using System;
 using SGE.Aplicacion.Autorizacion;
-using SGE.Aplicacion.Comun;
 using SGE.Dominio;
 using SGE.Dominio.Comun;
 using SGE.Dominio.ValueObjects;
@@ -19,7 +18,7 @@ public class ActualizarCaratulaExpedienteUseCase
     }
     public ModificarCaratulaExpedienteResponse Ejecutar(ModificarCaratulaExpedienteRequest request)
     {
-         if (!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteModificacion))
+        if (!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteModificacion))
         {
             throw new AutorizacionException("El usuario no tiene permiso para modificar la carátula del expediente.");
         }

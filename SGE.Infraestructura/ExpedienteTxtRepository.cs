@@ -1,6 +1,5 @@
 using System;
 using SGE.Aplicacion.Expedientes;
-using SGE.Aplicacion.Comun;
 using SGE.Dominio.Expedientes;
 using SGE.Dominio.Enums;
 using SGE.Dominio.ValueObjects;
