@@ -1,4 +1,4 @@
-using SGE.Dominio.Autorizacion;
+using SGE.Dominio.Enums;
 using SGE.Dominio.Comun;
 
 namespace SGE.Dominio.Usuarios;
