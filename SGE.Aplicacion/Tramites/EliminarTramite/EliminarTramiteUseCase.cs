@@ -1,5 +1,6 @@
 using SGE.Aplicacion.Autorizacion;
 using SGE.Aplicacion.Comun;
+using SGE.Dominio.Autorizacion;
 using SGE.Dominio.Tramites;
 namespace SGE.Aplicacion.Tramites.EliminarTramite;
 

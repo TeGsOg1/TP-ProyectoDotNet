@@ -2,6 +2,7 @@ using System;
 using SGE.Aplicacion.Autorizacion;
 using SGE.Aplicacion.Comun;
 using SGE.Dominio;
+using SGE.Dominio.Autorizacion;
 using SGE.Dominio.Comun;
 using SGE.Dominio.Enums;
 using SGE.Dominio.Expedientes;
@@ -19,7 +20,7 @@ public class ActualizarEstadoExpedienteUseCase
     }
     public void Ejecutar(ModificarEstadoExpedienteRequest request)
     {
-        // 1. Autorización. Tenemos que crear el enumerativo de perimisos y asignarlo a los usuarios para poder validar aca
+        // 1. Autorización.
         if(!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteModificacion))
         {
             throw new AutorizacionException("El usuario no tiene permiso para modificar el estado del expediente.");
