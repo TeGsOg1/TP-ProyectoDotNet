@@ -1,8 +1,8 @@
 using SGE.Dominio.Tramites;
-using SGE.Aplicacion;
 
 
-namespace SGE.Aplicacion.Tramites.ListarTramites;
+
+namespace SGE.Aplicacion.Tramites;
 
 public class ListarTramitesUseCase 
 {

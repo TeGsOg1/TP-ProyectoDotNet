@@ -1,8 +1,6 @@
 using System;
 using SGE.Aplicacion.Autorizacion;
-using SGE.Aplicacion.Comun;
 using SGE.Dominio;
-using SGE.Dominio.Autorizacion;
 using SGE.Dominio.Comun;
 using SGE.Dominio.Enums;
 using SGE.Dominio.Expedientes;

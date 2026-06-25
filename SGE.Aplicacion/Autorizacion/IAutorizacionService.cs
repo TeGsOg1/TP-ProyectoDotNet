@@ -1,4 +1,4 @@
-using SGE.Dominio.Autorizacion;
+using SGE.Dominio.Enums;
 
 namespace SGE.Aplicacion.Autorizacion;
 

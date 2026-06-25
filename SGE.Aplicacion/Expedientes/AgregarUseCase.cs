@@ -1,7 +1,7 @@
 using System;
 using SGE.Aplicacion; 
 using SGE.Dominio;
-using SGE.Dominio.Autorizacion;
+using SGE.Dominio.Enums;
 using SGE.Dominio.Expedientes;
 using SGE.Dominio.ValueObjects;
 using SGE.Aplicacion.Autorizacion;
