@@ -26,44 +26,11 @@ public class Tramite
         Etiqueta = etiqueta;
         Contenido = contenido;
         FechaCreacion = DateTime.UtcNow;
-        FechaUltimaModificacion = FechaCreacion;
-        UsuarioUltimoCambio = usuarioCreacion;
+        ActualizarAuditoria(usuarioCreacion);
     }
 
     private Tramite()
     {
-    }
-
-    public static Tramite Reconstruct(
-        Guid id,
-        Guid expedienteId,
-        EtiquetaTramite etiqueta,
-        ContenidoTramite contenido,
-        DateTime fechaCreacion,
-        DateTime fechaUltimaModificacion,
-        Guid usuarioUltimoCambio)
-    {
-        ValidarId(id);
-        ValidarExpedienteId(expedienteId);
-        ValidarEtiqueta(etiqueta);
-        ValidarContenido(contenido);
-        ValidarUsuario(usuarioUltimoCambio, "Usuario último cambio inválido.");
-
-        if (fechaUltimaModificacion < fechaCreacion)
-        {
-            throw new DominioException("La fecha de última modificación no puede ser menor a la fecha de creación.");
-        }
-
-        return new Tramite
-        {
-            Id = id,
-            ExpedienteId = expedienteId,
-            Etiqueta = etiqueta,
-            Contenido = contenido,
-            FechaCreacion = fechaCreacion,
-            FechaUltimaModificacion = fechaUltimaModificacion,
-            UsuarioUltimoCambio = usuarioUltimoCambio
-        };
     }
 
     public void Modificar(ContenidoTramite nuevoContenido, EtiquetaTramite nuevaEtiqueta, Guid usuarioId)
@@ -74,7 +41,7 @@ public class Tramite
 
         Contenido = nuevoContenido;
         Etiqueta = nuevaEtiqueta;
-        RegistrarModificacion(usuarioId);
+        ActualizarAuditoria(usuarioId);
     }
 
     public void ActualizarContenido(ContenidoTramite nuevoContenido, Guid usuarioId)
@@ -83,7 +50,7 @@ public class Tramite
         ValidarUsuario(usuarioId, "Usuario inválido.");
 
         Contenido = nuevoContenido;
-        RegistrarModificacion(usuarioId);
+        ActualizarAuditoria(usuarioId);
     }
 
     public void CambiarEtiqueta(EtiquetaTramite nuevaEtiqueta, Guid usuarioId)
@@ -92,10 +59,10 @@ public class Tramite
         ValidarUsuario(usuarioId, "Usuario inválido.");
 
         Etiqueta = nuevaEtiqueta;
-        RegistrarModificacion(usuarioId);
+        ActualizarAuditoria(usuarioId);
     }
 
-    private void RegistrarModificacion(Guid usuarioId)
+    private void ActualizarAuditoria(Guid usuarioId)
     {
         FechaUltimaModificacion = DateTime.UtcNow;
         if (FechaUltimaModificacion < FechaCreacion)
@@ -104,14 +71,6 @@ public class Tramite
         }
 
         UsuarioUltimoCambio = usuarioId;
-    }
-
-    private static void ValidarId(Guid id)
-    {
-        if (id == Guid.Empty)
-        {
-            throw new DominioException("Id inválido.");
-        }
     }
 
     private static void ValidarExpedienteId(Guid expedienteId)

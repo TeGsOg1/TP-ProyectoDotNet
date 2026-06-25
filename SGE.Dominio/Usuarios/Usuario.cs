@@ -12,7 +12,7 @@ public class Usuario
     public string CorreoElectronico { get; private set; } = null!;
     public string ContrasenaHash { get; private set; } = null!;
     public bool EsAdministrador { get; private set; }
-    public IReadOnlyCollection<Permiso> Permisos => _permisos;
+    public IReadOnlyCollection<Permiso> Permisos => _permisos.ToArray();
 
     public Usuario(string nombre, string correoElectronico, string contrasenaHash, bool esAdministrador = false)
     {
@@ -29,41 +29,6 @@ public class Usuario
 
     private Usuario()
     {
-    }
-
-    public static Usuario Reconstruct(
-        Guid id,
-        string nombre,
-        string correoElectronico,
-        string contrasenaHash,
-        bool esAdministrador,
-        IEnumerable<Permiso> permisos)
-    {
-        if (id == Guid.Empty)
-        {
-            throw new DominioException("Id inválido.");
-        }
-
-        ValidarNombre(nombre);
-        ValidarCorreoElectronico(correoElectronico);
-        ValidarContrasenaHash(contrasenaHash);
-        ArgumentNullException.ThrowIfNull(permisos);
-
-        var usuario = new Usuario
-        {
-            Id = id,
-            Nombre = nombre.Trim(),
-            CorreoElectronico = correoElectronico.Trim().ToLowerInvariant(),
-            ContrasenaHash = contrasenaHash.Trim(),
-            EsAdministrador = esAdministrador
-        };
-
-        foreach (var permiso in permisos)
-        {
-            usuario.AsignarPermiso(permiso);
-        }
-
-        return usuario;
     }
 
     public void ModificarDatosPersonales(string nombre, string correoElectronico)
