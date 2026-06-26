@@ -18,7 +18,7 @@ public class ActualizarEstadoExpedienteUseCase
     }
     public void Ejecutar(ModificarEstadoExpedienteRequest request)
     {
-        // 1. Autorización. Tenemos que crear el enumerativo de perimisos y asignarlo a los usuarios para poder validar aca
+        // 1. Autorización.
         if(!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteModificacion))
         {
             throw new AutorizacionException("El usuario no tiene permiso para modificar el estado del expediente.");

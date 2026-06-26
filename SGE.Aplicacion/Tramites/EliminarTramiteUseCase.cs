@@ -1,5 +1,7 @@
 using SGE.Aplicacion.Autorizacion;
+using SGE.Dominio.Enums;
 using SGE.Dominio.Tramites;
+
 namespace SGE.Aplicacion.Tramites;
 
 public class EliminarTramiteUseCase

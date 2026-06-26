@@ -8,11 +8,11 @@ namespace SGE.Dominio.Expedientes;
 public class Expediente
 {
     public Guid Id { get; private set; }
-    public Caratula Caratula { get; private set; }
+    public Caratula Caratula { get; private set; } = null!;
     public DateTime FechaCreacion { get; private set; }
     public DateTime FechaUltimaModificacion { get; private set; }
     public Guid UsuarioUltimoCambio { get; private set; }
-    public Estado Estado { get; private set; }
+    public Estado EstadoExpediente { get; private set; }
 
     public Expediente(Caratula caratula, Guid usuarioCreacion)
     {
@@ -22,29 +22,18 @@ public class Expediente
         Id = Guid.NewGuid();
         Caratula = caratula;
         FechaCreacion = DateTime.UtcNow;
-        FechaUltimaModificacion = FechaCreacion;
-        UsuarioUltimoCambio = usuarioCreacion;
-        Estado = Estado.RecienIniciado;
+        // Reutilizamos el método privado de auditoría
+        ActualizarAuditoria(usuarioCreacion);
+        EstadoExpediente = Estado.RecienIniciado;
     }
 
     private Expediente() { }
 
-    public static Expediente Reconstruct(Guid id, Caratula caratula, DateTime fechaCreacion, DateTime fechaUltimaModificacion, Guid usuarioUltimoCambio, Estado estado)
+    // Auditoría centralizada: Garantiza que no se olvide actualizar ningún campo
+    private void ActualizarAuditoria(Guid usuarioId)
     {
-        if (id == Guid.Empty) throw new DominioException("Id inválido.");
-        if (caratula is null) throw new DominioException("Carátula es obligatoria.");
-        if (usuarioUltimoCambio == Guid.Empty) throw new DominioException("Usuario último cambio inválido.");
-        if (fechaUltimaModificacion < fechaCreacion) throw new DominioException("FechaUltimaModificacion no puede ser menor que FechaCreacion.");
-
-        return new Expediente
-        {
-            Id = id,
-            Caratula = caratula,
-            FechaCreacion = fechaCreacion,
-            FechaUltimaModificacion = fechaUltimaModificacion,
-            UsuarioUltimoCambio = usuarioUltimoCambio,
-            Estado = estado
-        };
+        FechaUltimaModificacion = DateTime.UtcNow;
+        UsuarioUltimoCambio = usuarioId;
     }
 
     public void ActualizarCaratula(Caratula nuevaCaratula, Guid usuarioId)
@@ -53,63 +42,34 @@ public class Expediente
         if (usuarioId == Guid.Empty) throw new DominioException("Usuario inválido.");
 
         Caratula = nuevaCaratula;
-        FechaUltimaModificacion = DateTime.UtcNow;
-        if (FechaUltimaModificacion < FechaCreacion) FechaUltimaModificacion = FechaCreacion;
-        UsuarioUltimoCambio = usuarioId;
+        ActualizarAuditoria(usuarioId);
     }
 
-    public void ModificarCaratula(Caratula nuevaCaratula, Guid idUsuario)
+    public bool ActualizarEstadoPorTramite(EtiquetaTramite? ultimaEtiqueta, Guid usuarioId)
     {
-        ActualizarCaratula(nuevaCaratula, idUsuario);
-    }
+        if (usuarioId == Guid.Empty) throw new DominioException("Usuario inválido.");
 
-    public bool ActualizarEstado(Enums.EtiquetaTramite? ultimaEtiqueta, Guid idUsuario)
-    {
-        if (idUsuario == Guid.Empty) throw new DominioException("Usuario inválido.");
-
-        Estado? nuevoEstado = null;
-
-        if (ultimaEtiqueta is null)
+        Estado nuevoEstado = ultimaEtiqueta switch
         {
-            nuevoEstado = Estado.RecienIniciado;
-        }
-        else
-        {
-            switch (ultimaEtiqueta.Value)
-            {
-                case Enums.EtiquetaTramite.Resolucion:
-                    nuevoEstado = Estado.ConResolucion;
-                    break;
-                case Enums.EtiquetaTramite.PaseAEstudio:
-                    nuevoEstado = Estado.ParaResolver;
-                    break;
-                case Enums.EtiquetaTramite.PaseAlArchivo:
-                    nuevoEstado = Estado.Finalizado;
-                    break;
-                default:
-                    nuevoEstado = null;
-                    break;
-            }
-        }
+            EtiquetaTramite.Resolucion => Estado.ConResolucion,
+            EtiquetaTramite.PaseAEstudio => Estado.ParaResolver,
+            EtiquetaTramite.PaseAlArchivo => Estado.Finalizado,
+            _ => Estado.RecienIniciado
+        };
 
-        if (nuevoEstado is null || nuevoEstado.Value == Estado)
-            return false;
+        if (nuevoEstado == EstadoExpediente) return false;
 
-        Estado = nuevoEstado.Value;
-        FechaUltimaModificacion = DateTime.UtcNow;
-        if (FechaUltimaModificacion < FechaCreacion) FechaUltimaModificacion = FechaCreacion;
-        UsuarioUltimoCambio = idUsuario;
+        EstadoExpediente = nuevoEstado;
+        ActualizarAuditoria(usuarioId);
         return true;
     }
 
-    public void CambiarEstado(Estado nuevoEstado, Guid usuarioId)
+    public void CambiarEstadoManual(Estado nuevoEstado, Guid usuarioId)
     {
         if (!Enum.IsDefined(typeof(Estado), nuevoEstado)) throw new DominioException("Estado inválido.");
         if (usuarioId == Guid.Empty) throw new DominioException("Usuario inválido.");
 
-        Estado = nuevoEstado;
-        FechaUltimaModificacion = DateTime.UtcNow;
-        if (FechaUltimaModificacion < FechaCreacion) FechaUltimaModificacion = FechaCreacion;
-        UsuarioUltimoCambio = usuarioId;
+        EstadoExpediente = nuevoEstado;
+        ActualizarAuditoria(usuarioId);
     }
 }

@@ -2,6 +2,7 @@ using System;
 using SGE.Aplicacion.Tramites; 
 using SGE.Aplicacion.Autorizacion;
 using SGE.Dominio;
+using SGE.Dominio.Enums;
 using SGE.Dominio.Expedientes;
 
 namespace SGE.Aplicacion.Expedientes;

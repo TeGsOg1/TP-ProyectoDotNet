@@ -1,3 +1,5 @@
+using SGE.Dominio.Enums;
+
 namespace SGE.Aplicacion.Autorizacion;
 
 public interface IAutorizacionService {
