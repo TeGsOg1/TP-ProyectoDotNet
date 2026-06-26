@@ -1,5 +1,5 @@
 
-namespace SGE.Aplicacion.Tramites.ListarTramites;
+namespace SGE.Aplicacion.Tramites;
 
 public record ListarTramitesResponse(
         IEnumerable<TramiteDTO> Tramites

@@ -1,4 +1,4 @@
-namespace SGE.Aplicacion.Tramites.EliminarTramite;
+namespace SGE.Aplicacion.Tramites;
 
 public record EliminarTramiteRequest (Guid Id, Guid IdUsuario);
     

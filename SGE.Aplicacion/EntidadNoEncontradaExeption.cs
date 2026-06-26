@@ -1,4 +1,4 @@
-namespace SGE.Aplicacion.Comun;
+namespace SGE.Aplicacion;
 
 public class EntidadNoEncontradaException : Exception
 {

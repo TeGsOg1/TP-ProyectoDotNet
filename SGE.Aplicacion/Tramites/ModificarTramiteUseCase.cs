@@ -1,10 +1,8 @@
 using SGE.Aplicacion.Autorizacion;
-using SGE.Aplicacion.Comun;
-using SGE.Dominio.Autorizacion;
 using SGE.Dominio.Enums;
 using SGE.Dominio.ValueObjects;
 
-namespace SGE.Aplicacion.Tramites.ModificarTramite;
+namespace SGE.Aplicacion.Tramites;
 
 public class ModificarTramiteUseCase
 {

@@ -1,11 +1,12 @@
 using SGE.Dominio.Enums;
 using System;
 using SGE.Aplicacion.Autorizacion;
-using SGE.Aplicacion.Comun;
 using SGE.Dominio;
 using SGE.Dominio.Comun;
+using SGE.Dominio.Enums;
 using SGE.Dominio.ValueObjects;
 using SGE.Dominio.Expedientes;
+using SGE.Aplicacion.Comun;
 
 namespace SGE.Aplicacion.Expedientes;
 
