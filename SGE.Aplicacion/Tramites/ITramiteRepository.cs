@@ -6,7 +6,6 @@ public interface ITramiteRepository
 
     Tramite? ObtenerTramiteId (Guid Id);
     
-    void ModificarTramite(Tramite t);
     
     void EliminarTramite(Guid Id);
     
