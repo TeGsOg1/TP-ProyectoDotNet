@@ -2,7 +2,9 @@ using System;
 using System.Linq;
 using SGE.Aplicacion;
 using SGE.Dominio;
+
 using SGE.Dominio.Expedientes;
+
 namespace SGE.Aplicacion.Expedientes;
 
 public class ObtenerTodosExpedientesUseCase
@@ -22,7 +24,7 @@ public class ObtenerTodosExpedientesUseCase
             e.FechaCreacion,
             e.FechaUltimaModificacion,
             e.UsuarioUltimoCambio,
-            e.Estado.ToString()
+            e.EstadoExpediente.ToString()
         )).ToList();
         return new ObtenerTodosExpedienteResponse(expedientesDTO);
     }

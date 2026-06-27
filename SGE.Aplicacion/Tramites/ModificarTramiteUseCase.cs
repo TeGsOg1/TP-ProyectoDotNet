@@ -1,4 +1,5 @@
 using SGE.Aplicacion.Autorizacion;
+using SGE.Aplicacion.Comun;
 using SGE.Dominio.Enums;
 using SGE.Dominio.ValueObjects;
 
@@ -7,11 +8,17 @@ namespace SGE.Aplicacion.Tramites;
 public class ModificarTramiteUseCase
 {
     private readonly ITramiteRepository _tramiteRepository;
+    private readonly IUnidadDeTrabajo _unidadDeTrabajo;
     private readonly IAutorizacionService _autorizacionService; 
     private readonly IActualizacionEstadoExpedienteService _actualizacionEstadoExpedienteService;
 
-    public ModificarTramiteUseCase (ITramiteRepository tramiteRepository, IAutorizacionService autorizacionService, IActualizacionEstadoExpedienteService actualizacionEstadoExpedienteService) {
+    public ModificarTramiteUseCase(
+        ITramiteRepository tramiteRepository,
+        IUnidadDeTrabajo unidadDeTrabajo,
+        IAutorizacionService autorizacionService,
+        IActualizacionEstadoExpedienteService actualizacionEstadoExpedienteService) {
         _tramiteRepository = tramiteRepository;
+        _unidadDeTrabajo = unidadDeTrabajo;
         _autorizacionService = autorizacionService;
         _actualizacionEstadoExpedienteService = actualizacionEstadoExpedienteService;
     }
@@ -31,8 +38,8 @@ public class ModificarTramiteUseCase
             tramite.CambiarEtiqueta(Enum.Parse<EtiquetaTramite>(request.Etiqueta, true), request.IdUsuario);
         }
         
-        _tramiteRepository.ModificarTramite(tramite);
-        _actualizacionEstadoExpedienteService.Actualizar(request.IdUsuario, tramite.ExpedienteId);
+        _actualizacionEstadoExpedienteService.Actualizar(tramite.ExpedienteId, request.IdUsuario);
+        _unidadDeTrabajo.Guardar();
         return new ModificarTramiteResponse(tramite.Id);       
     }
 }

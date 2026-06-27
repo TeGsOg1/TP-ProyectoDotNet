@@ -29,7 +29,8 @@ public class Expediente
 
     private Expediente() { }
 
-    // Auditoría centralizada: Garantiza que no se olvide actualizar ningún campo
+    // proceso centralizado: Garantiza que no se olvide actualizar el estado, ademas es muchoo mas escalable y mantenible que 
+    // tener la logica de auditoria en cada metodo publico
     private void ActualizarAuditoria(Guid usuarioId)
     {
         FechaUltimaModificacion = DateTime.UtcNow;

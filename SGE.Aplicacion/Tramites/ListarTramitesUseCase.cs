@@ -1,7 +1,5 @@
 using SGE.Dominio.Tramites;
 
-
-
 namespace SGE.Aplicacion.Tramites;
 
 public class ListarTramitesUseCase 
