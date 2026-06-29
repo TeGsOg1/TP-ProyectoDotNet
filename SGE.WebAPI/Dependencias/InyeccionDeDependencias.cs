@@ -18,16 +18,19 @@ public static class InyeccionDeDependencias
                 opciones.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidateIssuer = true,
+                    ValidIssuer = configuration["Jwt:Issuer"],
                     ValidateAudience = true,
+                    ValidAudience = configuration["Jwt:Audience"],
                     ValidateLifetime = true,
                     ValidateIssuerSigningKey = true,
-                    ValidIssuer = configuration["Jwt:Issuer"],
-                    ValidAudience = configuration["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!))
+                    IssuerSigningKey = new SymmetricSecurityKey(
+                        Encoding.UTF8.GetBytes(configuration["Jwt:Key"]!)
+                    )
                 };
             });
 
         services.AddAuthorization();
+        
         return services;
     }
 }

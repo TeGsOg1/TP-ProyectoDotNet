@@ -23,6 +23,12 @@ public class ExcepcionGlobalMiddleware : IExceptionHandler
             problemDetails.Status = StatusCodes.Status403Forbidden;
             problemDetails.Detail = exception.Message;
         }
+        else if (exception is ArgumentException)
+        {
+            problemDetails.Title = "Argumento inválido";
+            problemDetails.Status = StatusCodes.Status400BadRequest;
+            problemDetails.Detail = exception.Message;
+        }
         else
         {
             problemDetails.Title = "Error interno del servidor";
@@ -30,7 +36,7 @@ public class ExcepcionGlobalMiddleware : IExceptionHandler
             problemDetails.Detail = "Ha ocurrido un error inesperado.";
         }
 
-        httpContext.Response.StatusCode = problemDetails.Status.Value;
+        httpContext.Response.StatusCode = problemDetails.Status ?? StatusCodes.Status500InternalServerError;
         await httpContext.Response.WriteAsJsonAsync(problemDetails, cancellationToken);
 
         return true;
