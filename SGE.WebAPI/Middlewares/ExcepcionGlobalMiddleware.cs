@@ -1,8 +1,9 @@
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SGE.Dominio.Excepciones; // Ajustar si tus excepciones tienen otro namespace
+using SGE.Aplicacion;
+using SGE.Aplicacion.Autorizacion;
 
-namespace SGE.WebApi.Middlewares;
+namespace SGE.WebAPI.Middlewares;
 
 public class ExcepcionGlobalMiddleware : IExceptionHandler
 {
@@ -10,13 +11,7 @@ public class ExcepcionGlobalMiddleware : IExceptionHandler
     {
         var problemDetails = new ProblemDetails { Instance = httpContext.Request.Path };
 
-        if (exception is DominioException)
-        {
-            problemDetails.Title = "Error de validación del negocio";
-            problemDetails.Status = StatusCodes.Status400BadRequest;
-            problemDetails.Detail = exception.Message;
-        }
-        else if (exception is EntidadNoEncontradaException)
+        if (exception is EntidadNoEncontradaException)
         {
             problemDetails.Title = "Recurso no encontrado";
             problemDetails.Status = StatusCodes.Status404NotFound;

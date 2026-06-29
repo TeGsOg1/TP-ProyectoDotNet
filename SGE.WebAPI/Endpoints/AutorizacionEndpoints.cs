@@ -1,7 +1,6 @@
-using SGE.Aplicacion.CasosDeUso; 
-using SGE.Aplicacion.DTOs; 
+using SGE.Aplicacion.Usuarios;
 
-namespace SGE.WebApi.Endpoints;
+namespace SGE.WebAPI.Endpoints;
 
 public static class AutorizacionEndpoints
 {
@@ -18,7 +17,7 @@ public static class AutorizacionEndpoints
         authApi.MapPost("/registrar", (RegistrarUsuarioRequest request, RegistrarUsuarioUseCase useCase) => 
         {
             var response = useCase.Ejecutar(request);
-            return Results.Created($"/api/usuarios/{response.Id}", response);
+            return Results.Created($"/api/usuarios/{response.IdUsuario}", response);
         });
     }
 }

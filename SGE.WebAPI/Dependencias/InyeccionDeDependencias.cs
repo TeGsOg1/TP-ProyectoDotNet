@@ -1,16 +1,16 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using SGE.WebApi.Servicios;
-using SGE.Aplicacion.Usuarios; // Asumiendo que ITokenProvider está acá
+using SGE.WebAPI.Servicios;
+using SGE.Aplicacion.Usuarios;
 
-namespace SGE.WebApi.Dependencias;
+namespace SGE.WebAPI.Dependencias;
 
 public static class InyeccionDeDependencias
 {
     public static IServiceCollection AddAutenticacionJWT(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddScoped<ITokenProvider, ServicioDeToken>();
+        services.AddScoped<ITokenService, ServicioDeToken>();
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(opciones =>

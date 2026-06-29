@@ -2,12 +2,12 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using SGE.Dominio.Entidades; // Ajustar a donde esté tu clase Usuario
-using SGE.Aplicacion.Interfaces; 
+using SGE.Dominio.Usuarios;
+using SGE.Aplicacion.Usuarios;
 
-namespace SGE.WebApi.Servicios;
+namespace SGE.WebAPI.Servicios;
 
-public class ServicioDeToken(IConfiguration config) : ITokenProvider
+public class ServicioDeToken(IConfiguration config) : ITokenService
 {
     public string GenerarToken(Usuario usuario)
     {

@@ -1,8 +1,8 @@
 using System.Security.Claims;
-using SGE.Aplicacion.CasosDeUso; 
-using SGE.Aplicacion.DTOs; 
+using SGE.Aplicacion.Tramites;
+using SGE.Aplicacion.Usuarios;
 
-namespace SGE.WebApi.Endpoints;
+namespace SGE.WebAPI.Endpoints;
 
 public static class TramiteEndpoints
 {
@@ -13,13 +13,15 @@ public static class TramiteEndpoints
         tramitesApi.MapPost("/", (AgregarTramiteRequest request, ClaimsPrincipal user, AgregarTramiteUseCase useCase) => 
         {
             var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
-            var response = useCase.Ejecutar(request, idUsuario);
+            var requestConIdUsuario = request with { IdUsuario = idUsuario };
+            var response = useCase.Ejecutar(requestConIdUsuario);
             return Results.Created($"/api/tramites/{response.Id}", response);
         }).RequireAuthorization();
 
-        tramitesApi.MapGet("/", (ListarTramitesUseCase useCase) => 
+        tramitesApi.MapGet("/{expedienteId:guid}", (Guid expedienteId, ListarTramitesUseCase useCase) => 
         {
-            var response = useCase.Ejecutar();
+            var request = new ListarTramiteRequest(expedienteId);
+            var response = useCase.Ejecutar(request);
             return Results.Ok(response);
         }).RequireAuthorization();
 
@@ -27,14 +29,16 @@ public static class TramiteEndpoints
         {
             if (id != request.Id) return Results.BadRequest(); 
             var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
-            useCase.Ejecutar(request, idUsuario);
+            var requestConIdUsuario = request with { IdUsuario = idUsuario };
+            useCase.Ejecutar(requestConIdUsuario);
             return Results.NoContent();
         }).RequireAuthorization();
 
         tramitesApi.MapDelete("/{id:guid}", (Guid id, ClaimsPrincipal user, EliminarTramiteUseCase useCase) => 
         {
             var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
-            useCase.Ejecutar(id, idUsuario);
+            var request = new EliminarTramiteRequest(id, idUsuario);
+            useCase.Ejecutar(request);
             return Results.NoContent();
         }).RequireAuthorization();
     }
