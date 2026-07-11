@@ -3,7 +3,7 @@ using SGE.WebAPI.Endpoints;
 using SGE.WebAPI.Middlewares;
 using Scalar.AspNetCore;
 using SGE.Aplicacion; 
-using SGE.Infraestructura;
+using SGE.Infraestructura.Extensiones;
 
 var builder = WebApplication.CreateBuilder(args);
 

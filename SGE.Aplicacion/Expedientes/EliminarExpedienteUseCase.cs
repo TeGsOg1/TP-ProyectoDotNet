@@ -1,4 +1,5 @@
 using System;
+using SGE.Aplicacion.Comun;
 using SGE.Aplicacion.Tramites; 
 using SGE.Aplicacion.Autorizacion;
 using SGE.Dominio;
