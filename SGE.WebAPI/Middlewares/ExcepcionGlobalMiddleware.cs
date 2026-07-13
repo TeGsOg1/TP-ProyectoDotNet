@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SGE.Aplicacion;
 using SGE.Aplicacion.Autorizacion;
+using SGE.Dominio.Comun;
 
 namespace SGE.WebAPI.Middlewares;
 
@@ -26,6 +27,12 @@ public class ExcepcionGlobalMiddleware : IExceptionHandler
         else if (exception is ArgumentException)
         {
             problemDetails.Title = "Argumento inválido";
+            problemDetails.Status = StatusCodes.Status400BadRequest;
+            problemDetails.Detail = exception.Message;
+        }
+        else if (exception is DominioException)
+        {
+            problemDetails.Title = "Error de dominio";
             problemDetails.Status = StatusCodes.Status400BadRequest;
             problemDetails.Detail = exception.Message;
         }
