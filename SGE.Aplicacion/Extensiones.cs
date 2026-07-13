@@ -24,6 +24,7 @@ public static class Extensiones
         servicios.AddScoped<RegistrarUsuarioUseCase>();
         servicios.AddScoped<LoginUseCase>();
         servicios.AddScoped<ListarUsuariosUseCase>();
+        servicios.AddScoped<ObtenerUsuarioPorIdUseCase>();
         servicios.AddScoped<EliminarUsuarioUseCase>();
         servicios.AddScoped<ModificarPermisosUsuarioUseCase>();
         servicios.AddScoped<ModificarMisDatosUseCase>();

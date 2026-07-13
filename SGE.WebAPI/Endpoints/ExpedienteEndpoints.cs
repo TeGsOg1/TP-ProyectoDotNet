@@ -1,6 +1,8 @@
 using System.Security.Claims;
+using SGE.Aplicacion;
 using SGE.Aplicacion.Expedientes;
 using SGE.Aplicacion.Tramites;
+using SGE.WebAPI.Servicios;
 
 namespace SGE.WebAPI.Endpoints;
 
@@ -16,9 +18,15 @@ public static class ExpedienteEndpoints
             return Results.Ok(response);
         }).RequireAuthorization();
 
+        expedientesApi.MapGet("/{id:guid}", (Guid id, ObtenerExpedientePorIdUseCase useCase) =>
+        {
+            var response = useCase.Ejecutar(id);
+            return Results.Ok(response);
+        }).RequireAuthorization();
+
         expedientesApi.MapPost("/", (AltaExpedienteRequest request, ClaimsPrincipal user, AltaExpedienteUseCase useCase) =>
         {
-            var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
+            var idUsuario = user.GetUserId();
             var requestConIdUsuario = request with { IdUsuario = idUsuario };
             var response = useCase.Ejecutar(requestConIdUsuario);
             return Results.Created($"/api/expedientes/{response.IdExpediente}", response);
@@ -26,7 +34,7 @@ public static class ExpedienteEndpoints
 
         expedientesApi.MapPut("/{id:guid}/caratula", (Guid id, ModificarCaratulaExpedienteRequest request, ClaimsPrincipal user, ActualizarCaratulaExpedienteUseCase useCase) =>
         {
-            var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
+            var idUsuario = user.GetUserId();
             var requestConIdUsuario = request with { IdUsuario = idUsuario };
             useCase.Ejecutar(requestConIdUsuario);
             return Results.NoContent();
@@ -34,7 +42,7 @@ public static class ExpedienteEndpoints
 
         expedientesApi.MapPut("/{id:guid}/estado", (Guid id, ModificarEstadoExpedienteRequest request, ClaimsPrincipal user, ActualizarEstadoExpedienteUseCase useCase) =>
         {
-            var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
+            var idUsuario = user.GetUserId();
             var requestConIdUsuario = request with { IdUsuario = idUsuario };
             useCase.Ejecutar(requestConIdUsuario);
             return Results.NoContent();
@@ -42,7 +50,7 @@ public static class ExpedienteEndpoints
 
         expedientesApi.MapDelete("/{id:guid}", (Guid id, ClaimsPrincipal user, EliminarExpedienteUseCase useCase) =>
         {
-            var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
+            var idUsuario = user.GetUserId();
             var request = new EliminarExpedienteRequest(id, idUsuario);
             useCase.Ejecutar(request);
             return Results.NoContent();

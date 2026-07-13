@@ -1,6 +1,8 @@
 using System.Security.Claims;
+using SGE.Aplicacion;
 using SGE.Aplicacion.Tramites;
 using SGE.Aplicacion.Usuarios;
+using SGE.WebAPI.Servicios;
 
 namespace SGE.WebAPI.Endpoints;
 
@@ -12,34 +14,52 @@ public static class TramiteEndpoints
 
         tramitesApi.MapPost("/", (AgregarTramiteRequest request, ClaimsPrincipal user, AgregarTramiteUseCase useCase) => 
         {
-            var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
+            try {
+                            var idUsuario = user.GetUserId();
             var requestConIdUsuario = request with { IdUsuario = idUsuario };
             var response = useCase.Ejecutar(requestConIdUsuario);
             return Results.Created($"/api/tramites/{response.Id}", response);
+            } catch (EntidadNoEncontradaException ) {
+                return Results.NotFound(new { message = "No se pudo agregar el trámite" });
+            }
+
         }).RequireAuthorization();
 
         tramitesApi.MapGet("/{expedienteId:guid}", (Guid expedienteId, ListarTramitesUseCase useCase) => 
         {
-            var request = new ListarTramiteRequest(expedienteId);
-            var response = useCase.Ejecutar(request);
-            return Results.Ok(response);
+            try
+            {
+                var request = new ListarTramiteRequest(expedienteId);
+                var response = useCase.Ejecutar(request);
+                return Results.Ok(response);
+            } catch (EntidadNoEncontradaException ) {
+                return Results.NotFound(new { message = $"Expediente con ID {expedienteId} no encontrado" });
+            }
         }).RequireAuthorization();
 
         tramitesApi.MapPut("/{id:guid}", (Guid id, ModificarTramiteRequest request, ClaimsPrincipal user, ModificarTramiteUseCase useCase) => 
         {
-            if (id != request.Id) return Results.BadRequest(); 
-            var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
-            var requestConIdUsuario = request with { IdUsuario = idUsuario };
-            useCase.Ejecutar(requestConIdUsuario);
-            return Results.NoContent();
+            try
+            {
+                var idUsuario = user.GetUserId();
+                var requestConIdUsuario = request with { IdUsuario = idUsuario };
+                useCase.Ejecutar(requestConIdUsuario);
+                return Results.NoContent();
+            } catch (EntidadNoEncontradaException ) {
+                return Results.NotFound(new { message = $"Trámite con ID {id} no encontrado" });
+            }
         }).RequireAuthorization();
 
         tramitesApi.MapDelete("/{id:guid}", (Guid id, ClaimsPrincipal user, EliminarTramiteUseCase useCase) => 
         {
-            var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
-            var request = new EliminarTramiteRequest(id, idUsuario);
-            useCase.Ejecutar(request);
-            return Results.NoContent();
+            try
+            {
+                var request = new EliminarTramiteRequest(id, user.GetUserId());
+                useCase.Ejecutar(request);
+                return Results.NoContent();
+            } catch (EntidadNoEncontradaException ) {
+                return Results.NotFound(new { message = $"Trámite con ID {id} no encontrado" });
+            }
         }).RequireAuthorization();
     }
 }

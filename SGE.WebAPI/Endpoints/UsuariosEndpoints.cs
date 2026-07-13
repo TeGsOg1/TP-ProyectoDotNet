@@ -1,5 +1,7 @@
 using System.Security.Claims;
+using SGE.Aplicacion;
 using SGE.Aplicacion.Usuarios;
+using SGE.WebAPI.Servicios;
 
 namespace SGE.WebAPI.Endpoints;
 
@@ -9,33 +11,58 @@ public static class UsuariosEndpoints
     {
         var usuariosApi = app.MapGroup("/api/usuarios").WithTags("Gestión de Usuarios");
 
-        usuariosApi.MapGet("/", (ClaimsPrincipal user, ListarUsuariosUseCase useCase) => 
+        usuariosApi.MapGet("/", (ClaimsPrincipal user, ListarUsuariosUseCase useCase) =>
         {
-            var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
+            var idUsuario = user.GetUserId();
             var request = new ListarUsuariosRequest(idUsuario);
             var response = useCase.Ejecutar(request);
             return Results.Ok(response);
         }).RequireAuthorization();
 
-        usuariosApi.MapDelete("/{id:guid}", (Guid id, ClaimsPrincipal user, EliminarUsuarioUseCase useCase) => 
-        {
-            var idAdmin = Guid.Parse(user.FindFirst("ID")!.Value);
-            var request = new EliminarUsuarioRequest(id, idAdmin);
-            useCase.Ejecutar(request);
-            return Results.NoContent();
+        usuariosApi.MapGet("/{id:guid}", (Guid id, ObtenerUsuarioPorIdUseCase useCase) =>
+        {   
+            try
+            {
+                var request = new ObtenerUsuarioPorIdRequest(id);
+                var response = useCase.Ejecutar(request);
+                return Results.Ok(response); 
+            } catch (EntidadNoEncontradaException )
+            {
+                return Results.NotFound(new { message = $"Usuario con ID {id} no encontrado" });
+            }
         }).RequireAuthorization();
 
-        usuariosApi.MapPut("/{id:guid}/permisos", (Guid id, ModificarPermisosUsuarioRequest request, ClaimsPrincipal user, ModificarPermisosUsuarioUseCase useCase) => 
+        usuariosApi.MapDelete("/{id:guid}", (Guid id, ClaimsPrincipal user, EliminarUsuarioUseCase useCase) =>
         {
-            var idAdmin = Guid.Parse(user.FindFirst("ID")!.Value);
-            var requestConIds = request with { IdUsuarioObjetivo = id, IdUsuarioEjecutor = idAdmin };
-            useCase.Ejecutar(requestConIds);
-            return Results.NoContent();
+            try
+            {
+                var idAdmin = user.GetUserId();
+                var request = new EliminarUsuarioRequest(id, idAdmin);
+                useCase.Ejecutar(request);
+                return Results.NoContent(); 
+            } catch (EntidadNoEncontradaException )
+            {
+                return Results.NotFound(new { message = $"Usuario con ID {id} no encontrado" });
+            }
         }).RequireAuthorization();
 
-        usuariosApi.MapPut("/mis-datos", (ModificarMisDatosRequest request, ClaimsPrincipal user, ModificarMisDatosUseCase useCase) => 
+        usuariosApi.MapPut("/{id:guid}/permisos", (Guid id, ModificarPermisosUsuarioRequest request, ClaimsPrincipal user, ModificarPermisosUsuarioUseCase useCase) =>
         {
-            var idUsuario = Guid.Parse(user.FindFirst("ID")!.Value);
+            try
+            {
+                var idAdmin = user.GetUserId();
+                var requestConIds = request with { IdUsuarioObjetivo = id, IdUsuarioEjecutor = idAdmin };
+                useCase.Ejecutar(requestConIds);
+                return Results.NoContent();
+            } catch (EntidadNoEncontradaException )
+            {
+                return Results.NotFound(new { message = $"Usuario con ID {id} no encontrado" });
+            }
+        }).RequireAuthorization();
+
+        usuariosApi.MapPut("/mis-datos", (ModificarMisDatosRequest request, ClaimsPrincipal user, ModificarMisDatosUseCase useCase) =>
+        {
+            var idUsuario = user.GetUserId();
             var requestConIds = request with { IdUsuarioToken = idUsuario, IdUsuarioObjetivo = idUsuario };
             useCase.Ejecutar(requestConIds);
             return Results.NoContent();
