@@ -1,4 +1,3 @@
-using SGE.Dominio.Enums;
 using System;
 using SGE.Aplicacion.Autorizacion;
 using SGE.Dominio;
