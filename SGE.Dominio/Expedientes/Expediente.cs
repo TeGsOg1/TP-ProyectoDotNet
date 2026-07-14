@@ -22,15 +22,11 @@ public class Expediente
         Id = Guid.NewGuid();
         Caratula = caratula;
         FechaCreacion = DateTime.UtcNow;
-        // Reutilizamos el método privado de auditoría
         ActualizarAuditoria(usuarioCreacion);
         EstadoExpediente = Estado.RecienIniciado;
     }
 
     private Expediente() { }
-
-    // proceso centralizado: Garantiza que no se olvide actualizar el estado, ademas es muchoo mas escalable y mantenible que 
-    // tener la logica de auditoria en cada metodo publico
     private void ActualizarAuditoria(Guid usuarioId)
     {
         FechaUltimaModificacion = DateTime.UtcNow;

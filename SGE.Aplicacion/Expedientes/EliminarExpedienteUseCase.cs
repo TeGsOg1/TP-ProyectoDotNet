@@ -7,7 +7,6 @@ using SGE.Dominio.Enums;
 using SGE.Dominio.Expedientes;
 
 namespace SGE.Aplicacion.Expedientes;
-//AL ELIMINAR UN EXPEDIENTE TENGO QUE ELIMINAR TODOS LOS TRÁMITES ASOCIADOS
 public class EliminarExpedienteUseCase
 {
     private readonly IUnidadDeTrabajo _unidadDeTrabajo;

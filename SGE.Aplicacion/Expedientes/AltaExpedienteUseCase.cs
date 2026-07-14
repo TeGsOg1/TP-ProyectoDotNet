@@ -27,13 +27,9 @@ public class AltaExpedienteUseCase
         {
             throw new AutorizacionException("El usuario no tiene permiso para crear expedientes.");
         }
-        //armamos el Value Object
         var caratula = new Caratula(request.Caratula);
-        // el constructor genera el Guid, setea la fecha y el Estado en RecienIniciado
         var nuevoExpediente = new Expediente(caratula, request.IdUsuario);
-        // el repo agrega el expediente a la db
         _expedienteRepository.Agregar(nuevoExpediente);
-        // terminamos de confirmar lo que hizo el repositorio antes y guardamos
         _unidadDeTrabajo.Guardar();
         return new AltaExpedienteResponse(nuevoExpediente.Id);
     }

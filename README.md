@@ -1,62 +1,81 @@
-# Probá el programa
+# SGE - Sistema de Gestión de Expedientes
 
-Qué hace este programa:
+Este repositorio contiene una API Web para gestionar usuarios, expedientes y trámites.
 
-Este programa es una consola de ejemplo para gestionar "expedientes" y sus "trámites". Permite crear un expediente, agregar trámites asociados, listar trámites y expedientes y mostrar cómo se manejan errores de dominio y autorización (esta última simulada). Está pensado como un ejercicio práctico hecho por alumnos.
+La aplicación principal actual está en `SGE.WebAPI` y usa:
+- ASP.NET Core Minimal APIs
+- Autenticación JWT
+- SQLite para persistencia local
+- Manejo global de excepciones con `ProblemDetails`
 
-Cómo arrancar (copiá y pegá en PowerShell):
+## Cómo ejecutar
+
+Ejecuta esto desde la carpeta SGE.WEBApi del repositorio:
 
 ```powershell
-dotnet run --project SGE.Consola/SGE.Consola.csproj
+dotnet run
 ```
 
-Qué hace el ejemplo:
-- Crea un expediente con una carátula.
-- Agrega dos trámites al expediente.
-- Lista los trámites y los expedientes guardados.
-- Hace dos pruebas de error: carátula vacía (error de dominio) y una nota para simular error de autorización.
+Después de arrancar, la API estará disponible en `https://localhost:5134`.
 
-Fragmento de código útil (sacado de `Program.cs`):
+## Endpoints principales
 
-```csharp
-// Creación básica
-var expedienteRepository = new ExpedienteTxtRepository();
-var tramiteRepository = new TramiteTxtRepository();
-IAutorizacionService autorizacionService = new AutorizacionProvisionalService();
+### Autenticación
 
-var agregarExpedienteUseCase = new AgregarUseCase(expedienteRepository, autorizacionService);
+- `POST /api/auth/login`
+  - Inicia sesión y devuelve un token JWT.
+- `POST /api/auth/registrar`
+  - Registra un nuevo usuario.
 
-var altaRequest = new AgregarExpedienteRequest("Compra de insumos informáticos", usuarioId);
-var altaResponse = agregarExpedienteUseCase.Ejecutar(altaRequest);
-Guid expedienteId = altaResponse.Id;
-Console.WriteLine($"Expediente creado OK -> ID: {expedienteId}");
+### Usuarios
+
+- `GET /api/usuarios/`
+  - Lista todos los usuarios.
+  - Requiere un token JWT válido y que el usuario sea administrador.
+- `GET /api/usuarios/{id}`
+  - Obtiene un usuario por su `guid`.
+- `DELETE /api/usuarios/{id}`
+  - Elimina un usuario.
+- `PUT /api/usuarios/{id}/permisos`
+  - Modifica permisos de un usuario.
+- `PUT /api/usuarios/mis-datos`
+  - Modifica los datos del usuario autenticado.
+
+## Nota para el profesor
+
+Si querés listar los usuarios sin iniciar sesion vas a tener que eliminar el codigo ".RequireAuthorization()" del endpoint y eliminar el parametro de entrada del metodo ListarUsuariosRequest y ListarUsuariosUseCase para que no hayan conflictos de accesos inautorizados.
+
+## Autorización y tokens
+
+Todos los endpoints de `usuarios` requieren autenticación.
+
+Para consumirlos debes:
+1. Hacer `POST /api/auth/login` con credenciales válidas.
+2. Copiar el token JWT de la respuesta.
+3. Enviar el header:
+
+```http
+Authorization: Bearer <token>
 ```
 
-Ejemplo de salida que vas a ver por consola (los GUID y fechas van a cambiar):
+Si no envías un token válido, la API devolverá `401 Unauthorized`.
+Si el usuario no tiene permisos de administrador, devolverá `403 Forbidden`.
 
-```
-Sistema de Gestion de Expedientes
+## Cómo probar en local
 
-Expediente creado OK -> ID: 3f1e2d4a-9c2b-4f3a-8a2a-6b9c0d1e2f3a
-Trámite iniciado agregado
-Trámite en revision agregado
+- Abre Swagger o la documentación OpenAPI si estás en desarrollo.
+- Usa `POST /api/auth/login` para obtener el token.
+- Usa ese token en las solicitudes a `/api/usuarios/`.
 
-TRAMITES DEL EXPEDIENTE:
-- INICIADO | Se inicia el expediente | 2026-05-19T12:34:56
-- EN_REVISION | Se envía a revisión | 2026-05-19T12:35:01
+## Notas de implementación
 
-EXPEDIENTES:
-- 3f1e2d4a-9c2b-4f3a-8a2a-6b9c0d1e2f3a | Compra de insumos informáticos | Estado: INICIADO
+- La API usa el middleware global `ExcepcionGlobalMiddleware` para traducir excepciones de dominio en respuestas HTTP adecuadas.
+- `SGE.Aplicacion` contiene los casos de uso, modelos y peticiones.
+- `SGE.Infraestructura` contiene la implementación del repositorio y la configuración de datos.
 
+## Estructura de carpetas relevante
 
------ PRUEBAS DE ERROR -----
+- `SGE.WebAPI/` - proyecto de la API.
+- `SGE.Aplicacion/` - lógica de negocio y casos de uso.
+- `SGE.Infraestructura/` - persistencia y servicios de infraestructura.
 
-Intentando crear expediente con carátula vacía...
-OK -> DominioException capturada: La carátula no puede ser vacía.
-
-Para probar la parte de autorización (si querés ver el error):
-1) Abrí `SGE.Infraestructura/AutorizacionProvisionalService.cs`
-2) Cambiá el "return true;" por "return false;"
-3) Volvé a correr el programa y vas a ver la excepción de autorización.
-
-Fin.

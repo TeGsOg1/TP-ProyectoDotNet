@@ -8,5 +8,5 @@ public record class ObtenerExpedientePorIdResponse(
     DateTime FechaUltimaModificacion,
     Guid UsuarioUltimoCambio,
     string Estado,
-    List<TramiteDTO> Tramites // ¡Acá está la clave de este requerimiento!
+    List<TramiteDTO> Tramites 
 );

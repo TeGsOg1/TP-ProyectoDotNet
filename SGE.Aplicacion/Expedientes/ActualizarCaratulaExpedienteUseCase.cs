@@ -22,7 +22,6 @@ public class ActualizarCaratulaExpedienteUseCase
     }
     public ModificarCaratulaExpedienteResponse Ejecutar(ModificarCaratulaExpedienteRequest request)
     {
-        // 2. Perfecto el chequeo de permisos acá
         if (!_autorizacionService.PoseeElPermiso(request.IdUsuario, Permiso.ExpedienteModificacion))
         {
             throw new AutorizacionException("El usuario no tiene permiso para modificar la carátula.");
@@ -34,9 +33,7 @@ public class ActualizarCaratulaExpedienteUseCase
         }
         var nuevaCaratula = new Caratula(request.NuevaCaratula);
         
-        // El dominio valida sus propias reglas
         expediente.ActualizarCaratula(nuevaCaratula, request.IdUsuario);
-        // usamos el UoW
         _unidadDeTrabajo.Guardar();
 
         return new ModificarCaratulaExpedienteResponse();

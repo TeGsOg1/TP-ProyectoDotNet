@@ -19,7 +19,6 @@ public class ObtenerTodosExpedientesUseCase
         var expedientes =  _repository.ObtenerTodosExpedientes();   
         var expedientesDTO = expedientes.Select(e => new ExpedienteDTO(
             e.Id,
-            //Caratula es un Value Object, por lo que para obtener su contenido tengo que acceder a la propiedad Texto
             e.Caratula.Texto, 
             e.FechaCreacion,
             e.FechaUltimaModificacion,
