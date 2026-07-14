@@ -18,6 +18,12 @@ public class ExcepcionGlobalMiddleware : IExceptionHandler
             problemDetails.Status = StatusCodes.Status404NotFound;
             problemDetails.Detail = exception.Message;
         }
+        else if (exception is UnauthorizedAccessException)
+        {
+            problemDetails.Title = "No autorizado";
+            problemDetails.Status = StatusCodes.Status401Unauthorized;
+            problemDetails.Detail = exception.Message;
+        }
         else if (exception is AutorizacionException)
         {
             problemDetails.Title = "Acceso denegado";
