@@ -23,6 +23,7 @@ public static class UsuariosEndpoints
         {   
             try
             {
+                Console.WriteLine($"Obteniendo usuario con ID: {id}");
                 var request = new ObtenerUsuarioPorIdRequest(id);
                 var response = useCase.Ejecutar(request);
                 return Results.Ok(response); 
