@@ -15,10 +15,10 @@ public static class TramiteEndpoints
         tramitesApi.MapPost("/", (AgregarTramiteRequest request, ClaimsPrincipal user, AgregarTramiteUseCase useCase) => 
         {
             try {
-                            var idUsuario = user.GetUserId();
-            var requestConIdUsuario = request with { IdUsuario = idUsuario };
-            var response = useCase.Ejecutar(requestConIdUsuario);
-            return Results.Created($"/api/tramites/{response.Id}", response);
+                var idUsuario = user.GetUserId();
+                var requestConIdUsuario = request with { IdUsuario = idUsuario };
+                var response = useCase.Ejecutar(requestConIdUsuario);
+                return Results.Created($"/api/tramites/{response.Id}", response);
             } catch (EntidadNoEncontradaException ) {
                 return Results.NotFound(new { message = "No se pudo agregar el trámite" });
             }
