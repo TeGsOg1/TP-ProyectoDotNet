@@ -15,7 +15,6 @@ public sealed class UnidadDeTrabajo : IUnidadDeTrabajo
 
     public void Guardar()
     {
-        // EF Core hace todo el trabajo sucio por nosotros gracias al SgeContext
         _context.SaveChanges();
     }
 }

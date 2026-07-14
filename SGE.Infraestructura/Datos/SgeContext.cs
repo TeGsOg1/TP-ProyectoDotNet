@@ -22,12 +22,11 @@ public class SgeContext : DbContext
     {
         base.OnModelCreating(modelBuilder);
 
-        // 1. Mapeo de Expediente con su Value Object (Caratula)
         modelBuilder.Entity<Expediente>(builder =>
         {
             builder.ToTable("Expedientes");
             builder.HasKey(e => e.Id);
-            builder.Property(e => e.Id).ValueGeneratedNever(); // Bloqueo de ID en BD (Pura Arquitectura Limpia)
+            builder.Property(e => e.Id).ValueGeneratedNever();
             
             builder.ComplexProperty(e => e.Caratula, caratula =>
             {
@@ -37,7 +36,6 @@ public class SgeContext : DbContext
             });
         });
 
-        // 2. Mapeo de Tramite con su Value Object (Contenido) y Relación
         modelBuilder.Entity<Tramite>(builder =>
         {
             builder.ToTable("Tramites");
@@ -57,7 +55,6 @@ public class SgeContext : DbContext
                 .OnDelete(DeleteBehavior.Cascade);
         });
 
-        // 3. Mapeo de Tu Usuario Impecable
         modelBuilder.Entity<Usuario>(builder =>
         {
             builder.ToTable("Usuarios");
@@ -65,7 +62,6 @@ public class SgeContext : DbContext
             builder.Property(u => u.Id).ValueGeneratedNever();
             builder.HasIndex(u => u.CorreoElectronico).IsUnique();
 
-            // Magia de EF Core: Mapeamos tu campo privado _permisos a un JSON en la columna "Permisos"
             builder.Property<HashSet<Permiso>>("_permisos")
                 .HasColumnName("Permisos")
                 .HasConversion(

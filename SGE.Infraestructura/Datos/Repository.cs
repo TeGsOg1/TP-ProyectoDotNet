@@ -2,10 +2,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace SGE.Infraestructura.Datos;
 
-/// <summary>
-/// Base común para los repositorios EF Core. No confirma cambios: esa tarea
-/// corresponde exclusivamente a <see cref="UnidadDeTrabajo"/>.
-/// </summary>
 public abstract class Repository<T> where T : class
 {
     protected readonly SgeContext _context;

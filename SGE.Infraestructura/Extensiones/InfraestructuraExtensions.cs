@@ -21,7 +21,6 @@ public static class InfraestructuraExtensions
     public static IServiceCollection AddInfraestructura(this IServiceCollection servicios, IConfiguration configuration)
     {
         var connectionString = configuration.GetConnectionString("SgeDb") ?? throw new InvalidOperationException("No se encontró la cadena de conexión 'SgeDb' en la configuración.");
-        //registro GestionContext en el contenedor y lo configuro para que use sqlite y con la cadena "SgeDb"
 
         servicios.AddDbContext<SgeContext>(opciones => opciones.UseSqlite(connectionString));
         servicios.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();

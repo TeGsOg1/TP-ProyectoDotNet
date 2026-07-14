@@ -10,14 +10,9 @@ public sealed class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
     {
     }
 
-    // Ya no necesitamos sobrescribir ObtenerPorId ni ObtenerTodos.
-    // La clase base (Repository<T>) hace el trabajo, y EF Core hidrata el JSON de los permisos automáticamente.
-
     public Usuario? ObtenerPorCorreoElectronico(string correoElectronico)
     {
         var correoNormalizado = correoElectronico.Trim().ToLowerInvariant();
-        
-        // EF Core busca el usuario y ya nos lo trae con los permisos cargados
         return _dbSet.SingleOrDefault(usuario => usuario.CorreoElectronico == correoNormalizado);
     }
 }
